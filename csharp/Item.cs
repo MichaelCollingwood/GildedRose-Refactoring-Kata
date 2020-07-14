@@ -9,13 +9,13 @@ namespace csharp
         public int SellIn { get; set; }
         public int Quality { get; set; }
         public string Type { get; set; }
-        public bool Perishable { get; set; }
+        public bool Perishable { get; private set; }
         public int Change { get; set; }
-        public Dictionary<int, int> MileStones { get; set; }
+        public Dictionary<int, int> MileStones { get; private set; }
         
         public void AffixAttributes()
         {
-            OptionSet typeOptions = new OptionSet()
+            var typeOptions = new OptionSet
             {
                 {
                     "normal", v =>
@@ -58,7 +58,7 @@ namespace csharp
                     }
                 }
             };
-            typeOptions.Parse(new string[] {"-"+Type});
+            typeOptions.Parse(new [] {"-"+Type});
         }
 
         public override string ToString()

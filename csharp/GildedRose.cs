@@ -16,10 +16,7 @@ namespace csharp
             foreach (var item in Items)
             {
                 // update item properties
-                if (item.MileStones != null)
-                {
-                    item.Change = item.MileStones.ContainsKey(item.SellIn) ? item.MileStones[item.SellIn] : item.Change;
-                }
+                item.Change = item.MileStones.ContainsKey(item.SellIn) ? item.MileStones[item.SellIn] : item.Change;
                 item.Quality = item.Perishable && item.SellIn < 0 ? 0 : item.Quality + item.Change;
                 item.SellIn += item.Type == "legendary" ? 0 : -1;
                 
