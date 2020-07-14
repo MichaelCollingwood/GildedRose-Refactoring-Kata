@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using System.Collections.Generic;
+using ApprovalUtilities.Utilities;
 
 namespace csharp
 {
@@ -13,10 +14,7 @@ namespace csharp
                 new Item {Name = "+5 Dexterity Vest", SellIn = 10, Quality = 20, Type = "normal"},
             };
             
-            foreach (var item in Items)
-            {
-                item.AffixAttributes();
-            }
+            Items.ForEach(x => x.AffixAttributes());
             GildedRose app = new GildedRose(Items);
             app.UpdateQuality();
             Assert.AreEqual(19, Items[0].Quality);
@@ -28,10 +26,7 @@ namespace csharp
                 new Item {Name = "Aged Brie", SellIn = 10, Quality = 20, Type = "ageing food"},
             };
             
-            foreach (var item in Items)
-            {
-                item.AffixAttributes();
-            }
+            Items.ForEach(x => x.AffixAttributes());
             GildedRose app = new GildedRose(Items);
             app.UpdateQuality();
             Assert.AreEqual(21, Items[0].Quality);
@@ -46,10 +41,7 @@ namespace csharp
                 new Item {Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 0, Quality = 49, Type = "backstage passes"}
             };
             
-            foreach (var item in Items)
-            {
-                item.AffixAttributes();
-            }
+            Items.ForEach(x => x.AffixAttributes());
             GildedRose app = new GildedRose(Items);
             app.UpdateQuality();
             Assert.Greater(Items[0].Quality,-1);
@@ -65,10 +57,7 @@ namespace csharp
                 new Item {Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 2, Quality = 50, Type = "backstage passes"}
             };
             
-            foreach (var item in Items)
-            {
-                item.AffixAttributes();
-            }
+            Items.ForEach(x => x.AffixAttributes());
             GildedRose app = new GildedRose(Items);
             app.UpdateQuality();
             Assert.Less(Items[0].Quality,51);
@@ -82,10 +71,7 @@ namespace csharp
                 new Item {Name = "Sulfuras, Hand of Ragnaros", SellIn = -1, Quality = 80, Type = "legendary"}
             };
             
-            foreach (var item in Items)
-            {
-                item.AffixAttributes();
-            }
+            Items.ForEach(x => x.AffixAttributes());
             GildedRose app = new GildedRose(Items);
             app.UpdateQuality();
             Assert.AreEqual(-1,Items[0].SellIn);
@@ -102,10 +88,7 @@ namespace csharp
                 new Item {Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = -1, Quality = 20, Type = "backstage passes"}
             };
             
-            foreach (var item in Items)
-            {
-                item.AffixAttributes();
-            }
+            Items.ForEach(x => x.AffixAttributes());
             GildedRose app = new GildedRose(Items);
             app.UpdateQuality();
             Assert.AreEqual(21,Items[0].Quality);
@@ -121,10 +104,7 @@ namespace csharp
                 new Item {Name = "Conjured Mana Cake", SellIn = 3, Quality = 6, Type = "conjured"}
             };
             
-            foreach (var item in Items)
-            {
-                item.AffixAttributes();
-            }
+            Items.ForEach(x => x.AffixAttributes());
             GildedRose app = new GildedRose(Items);
             app.UpdateQuality();
             Assert.AreEqual(4,Items[0].Quality);
